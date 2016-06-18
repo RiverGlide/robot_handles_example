@@ -1,0 +1,21 @@
+group 'com.riverglide.demo'
+version '0.0.1-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.seleniumhq.selenium:selenium-java:2.53.0'
+}
+
+test {
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}
