@@ -1,6 +1,7 @@
-package com.riverglide.demo.robot_handles;
+package com.riverglide.robot;
 
-import com.riverglide.demo.robot_handles.handles.IAnswerQuestions;
+import com.riverglide.robot.handles.IAnswerQuestions;
+import com.riverglide.robot.handles.RobotHandle;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,4 +1,4 @@
-package com.riverglide.demo.robot_handles.handles;
+package com.riverglide.robot.handles;
 
 import org.openqa.selenium.WebElement;
 

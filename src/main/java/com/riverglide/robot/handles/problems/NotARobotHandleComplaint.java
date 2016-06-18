@@ -1,7 +1,7 @@
-package com.riverglide.demo.robot_handles.problems;
+package com.riverglide.robot.handles.problems;
 
-import com.riverglide.demo.robot_handles.handles.IAnswerQuestions;
-import com.riverglide.demo.robot_handles.handles.RobotHandleFor;
+import com.riverglide.robot.handles.IAnswerQuestions;
+import com.riverglide.robot.handles.RobotHandleFor;
 
 import static java.lang.String.format;
 

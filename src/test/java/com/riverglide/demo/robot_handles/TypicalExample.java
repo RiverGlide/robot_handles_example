@@ -1,5 +1,6 @@
 package com.riverglide.demo.robot_handles;
 
+import com.riverglide.robot.Robot;
 import com.riverglide.demo.robot_handles.page_objects.ServicesPage;
 import org.junit.After;
 import org.junit.Before;

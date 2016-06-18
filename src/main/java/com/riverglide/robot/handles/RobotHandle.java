@@ -1,8 +1,6 @@
-package com.riverglide.demo.robot_handles;
+package com.riverglide.robot.handles;
 
-import com.riverglide.demo.robot_handles.handles.IAnswerQuestions;
-import com.riverglide.demo.robot_handles.handles.RobotHandleFor;
-import com.riverglide.demo.robot_handles.problems.NotARobotHandleComplaint;
+import com.riverglide.robot.handles.problems.NotARobotHandleComplaint;
 import org.reflections.Reflections;
 
 import java.util.HashMap;
