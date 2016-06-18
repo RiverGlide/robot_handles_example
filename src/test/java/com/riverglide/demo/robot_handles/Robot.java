@@ -2,6 +2,7 @@ package com.riverglide.demo.robot_handles;
 
 import com.riverglide.demo.robot_handles.handles.HtmlRadio;
 import com.riverglide.demo.robot_handles.handles.HtmlSelect;
+import com.riverglide.demo.robot_handles.handles.HtmlText;
 import com.riverglide.demo.robot_handles.handles.IAnswerQuestions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,7 @@ public class Robot {
     private static Map<String, IAnswerQuestions> available_handles = new HashMap<String, IAnswerQuestions>() {{
         put("html-select", new HtmlSelect());
         put("html-radio", new HtmlRadio());
+        put("html-text", new HtmlText());
     }};
 
     public void exchange(Map<String, String> questions_and_answers, WebDriver with_user) {
