@@ -1,25 +1,30 @@
 package com.riverglide.demo.robot_handles;
 
-import com.riverglide.demo.robot_handles.handles.HtmlRadio;
-import com.riverglide.demo.robot_handles.handles.HtmlSelect;
-import com.riverglide.demo.robot_handles.handles.HtmlText;
 import com.riverglide.demo.robot_handles.handles.IAnswerQuestions;
+import com.riverglide.demo.robot_handles.handles.RobotHandleFor;
+import com.riverglide.demo.robot_handles.problems.NotARobotHandleComplaint;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.reflections.Reflections;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static java.lang.String.format;
 
 public class Robot {
-    private static Map<String, IAnswerQuestions> available_handles = new HashMap<String, IAnswerQuestions>() {{
-        put("html-select", new HtmlSelect());
-        put("html-radio", new HtmlRadio());
-        put("html-text", new HtmlText());
-    }};
+    private final Map<String, IAnswerQuestions> available_handles;
+
+    public Robot() {
+        available_handles = new HashMap<>();
+        Set<Class<?>> known_handles = new Reflections().getTypesAnnotatedWith(RobotHandleFor.class);
+        known_handles.forEach(
+            handle -> available_handles.put(handle.getAnnotation(RobotHandleFor.class).value(), create(handle))
+        );
+    }
 
     public void exchange(Map<String, String> questions_and_answers, WebDriver with_user) {
         List<WebElement> questions_from_user = with_user.findElements(By.cssSelector("[data-question]"));
@@ -31,6 +36,18 @@ public class Robot {
                 continue;
             }
             question_handler.answer(question, "Groom");
+        }
+    }
+
+    private IAnswerQuestions create(Class<?> handle) {
+        try {
+            return (IAnswerQuestions) handle.newInstance();
+        }
+        catch (ClassCastException e) {
+            throw new NotARobotHandleComplaint(handle, e);
+        }
+        catch (Exception e) {
+            throw new UnsupportedOperationException("TODO - Handle this", e);
         }
     }
 }

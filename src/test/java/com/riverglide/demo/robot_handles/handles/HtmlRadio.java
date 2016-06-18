@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import static java.lang.String.format;
 
+@RobotHandleFor("html-radio")
 public class HtmlRadio implements IAnswerQuestions {
     @Override
     public void answer(WebElement question, String answer) {

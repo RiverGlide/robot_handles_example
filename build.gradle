@@ -10,8 +10,10 @@ repositories {
 }
 
 dependencies {
+    compile 'org.seleniumhq.selenium:selenium-java:2.53.0'
+    compile 'org.reflections:reflections:0.9.10'
+
     testCompile 'junit:junit:4.11'
-    testCompile 'org.seleniumhq.selenium:selenium-java:2.53.0'
 }
 
 test {
