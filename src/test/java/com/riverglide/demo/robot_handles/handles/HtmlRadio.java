@@ -2,11 +2,12 @@ package com.riverglide.demo.robot_handles.handles;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-public class HtmlSelect implements IAnswerQuestions {
+import static java.lang.String.format;
+
+public class HtmlRadio implements IAnswerQuestions {
     @Override
     public void answer(WebElement question, String answer) {
-        new Select(question.findElement(By.cssSelector("select"))).selectByVisibleText(answer);
+        question.findElement(By.cssSelector(format("input[value='%s']",answer))).click();
     }
 }
