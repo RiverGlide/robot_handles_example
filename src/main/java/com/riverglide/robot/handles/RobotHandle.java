@@ -2,16 +2,17 @@ package com.riverglide.robot.handles;
 
 import com.riverglide.robot.handles.problems.NotARobotHandleComplaint;
 import org.reflections.Reflections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static java.lang.String.format;
-
 public class RobotHandle {
+    private static final Logger log = LoggerFactory.getLogger(RobotHandle.class);
     private static final IAnswerQuestions DONT_KNOW_HOW_TO_ANSWER =
-            (question, answer) -> System.out.println(format("I don't know how to answer a question in the form [%s]", question.getAttribute("data-question-type")));
+            (question, answer) -> log.warn("I don't know how to answer the question [{}] in the form [{}]", question.getAttribute("data-question"), question.getAttribute("data-question-type"));
     private static Map<String, IAnswerQuestions> available_handles = new HashMap<>();
 
     public static IAnswerQuestions for_(String question_type) {
@@ -22,7 +23,7 @@ public class RobotHandle {
     }
 
     private static Map<String, IAnswerQuestions> findKnownRobotHandles() {
-        System.out.println("Searching for robot handles");
+        log.info("Searching for robot handles");
         Map<String, IAnswerQuestions> available_handles = new HashMap<>();
         Set<Class<?>> known_handles = new Reflections().getTypesAnnotatedWith(RobotHandleFor.class);
         known_handles.forEach(

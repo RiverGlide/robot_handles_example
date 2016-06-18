@@ -12,8 +12,10 @@ repositories {
 dependencies {
     compile 'org.seleniumhq.selenium:selenium-java:2.53.0'
     compile 'org.reflections:reflections:0.9.10'
+    compile 'org.slf4j:slf4j-api:1.7.21'
 
     testCompile 'junit:junit:4.11'
+    testRuntime 'org.slf4j:slf4j-simple:1.7.21'
 }
 
 test {
