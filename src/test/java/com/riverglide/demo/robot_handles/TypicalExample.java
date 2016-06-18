@@ -45,8 +45,20 @@ public class TypicalExample {
     @Test
     public void robot_handles_example() {
         user.get("http://localhost:8000/services2.html");
-        Map<String, String> questions_and_answers = new HashMap<>();
+        Map<String,String> questions_and_answers = new HashMap<>();
         questions_and_answers.put("service-required", "Groom");
+
+        Robot robot = new Robot();
+        robot.exchange(questions_and_answers, with(user));
+    }
+
+    @Test
+    public void second_robot_example() {
+        user.get("http://localhost:8000/robot_example2.html");
+        Map<String,String> questions_and_answers = new HashMap<>();
+        questions_and_answers.put("name", "Andy Palmer");
+        questions_and_answers.put("country", "India");
+        questions_and_answers.put("gender", "Male");
 
         Robot robot = new Robot();
         robot.exchange(questions_and_answers, with(user));

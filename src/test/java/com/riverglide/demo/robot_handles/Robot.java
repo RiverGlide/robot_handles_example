@@ -35,7 +35,9 @@ public class Robot {
                 System.out.println(format("I don't know how to answer a question of type [%s]", question_type));
                 continue;
             }
-            question_handler.answer(question, "Groom");
+
+            String answer = questions_and_answers.get(question.getAttribute("data-question"));
+            question_handler.answer(question, answer);
         }
     }
 
