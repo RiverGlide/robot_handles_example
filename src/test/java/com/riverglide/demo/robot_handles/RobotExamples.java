@@ -7,6 +7,10 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
+
 public class RobotExamples {
     private WebDriver application;
 
@@ -38,6 +42,10 @@ public class RobotExamples {
         user.knows("name", "Andy Palmer");
         user.knows("gender", "Male");
         user.knows("country", "India");
+        user.wants_to_know("name-of-event");
+
         user.exchange_knowledge_with(application);
+
+        assertThat(user.knows("name-of-event"), is(equalTo("Selenium Conf 2016")));
     }
 }
