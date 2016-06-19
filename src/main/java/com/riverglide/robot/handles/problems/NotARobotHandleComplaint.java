@@ -11,6 +11,6 @@ public class NotARobotHandleComplaint extends RuntimeException {
             handle.getCanonicalName(),
             RobotHandleFor.class.getSimpleName(),
             IAnswerQuestions.class.getSimpleName()
-        ));
+        ), e);
     }
 }
